@@ -1,3 +1,3 @@
-<h1>let, var, go!</h1>
+<h1>{{ site.title }}</h1>
 
 <p>simple, swift</p>
