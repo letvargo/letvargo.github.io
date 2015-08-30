@@ -1,9 +1,12 @@
 body {
-    background-color: lightblue;
+    background-color: lightgrey;
+    font-family: "Verdana", sans-serif;
 }
 
 div.container {
     width: 800px;
+    margin: auto;
+    background-color: white;
 }
 
 div.header, div.main-content {
