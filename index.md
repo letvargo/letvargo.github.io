@@ -9,13 +9,13 @@ Unfortunately, my server died and I have not yet been able to recover the posts 
 
 More is to come.
 
-{% highlight swift %}
+{% highlight linenos %}
 
-// This is a code-block test
+    // This is a code-block test
 
-func testfun() -> () {
-    print("This is a test.")
-}
+    func testfun() -> () {
+        print("This is a test.")
+    }
 
 {% endhighlight %}
     
