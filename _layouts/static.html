@@ -7,7 +7,8 @@
         <title>let, var, go!</title>
     </head>
     <body>
-        {% include header.md %}
+        {% capture my-include %}{% include header.md %}{% endcapture %}
+        {{ my-include | markdownify }}
         {{ content }}
     </body>
 </html>
