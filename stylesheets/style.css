@@ -1,6 +1,7 @@
 body {
     background-color: lightgrey;
     font-family: "Verdana", sans-serif;
+    padding: 0px;
 }
 
 div.container {
@@ -22,4 +23,8 @@ div.header, div.main-content {
 
 .title, .subtitle {
     text-align: center;
+}
+
+code, pre {
+    font-family: "Courier", monospace
 }
