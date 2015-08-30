@@ -1,6 +1,3 @@
----
-title: Header
----
-# let, var, go!
+<h1>let, var, go!</h1>
 
-simple, swift
+<p>simple, swift</p>
