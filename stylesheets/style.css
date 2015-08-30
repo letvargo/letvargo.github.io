@@ -2,6 +2,14 @@ body {
     background-color: lightblue;
 }
 
+div.container {
+    width: 800px;
+}
+
+div.header, div.main-content {
+    width: 100%;
+}
+
 .title, .subtitle {
     text-align: center;
 }
