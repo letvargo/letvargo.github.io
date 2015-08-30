@@ -1,3 +1,7 @@
 body {
     background-color: lightblue;
 }
+
+.title, .subtitle {
+    text-align: center;
+}
