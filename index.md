@@ -14,9 +14,7 @@ More is to come.
 // This is a code-block test
 
 func testfun() -> () {
-
     print("This is a test.")
-
 }
 
 {% endhighlight %}
