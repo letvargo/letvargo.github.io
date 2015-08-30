@@ -1,3 +1,3 @@
-<h1>let, var, go!</h1>
+# let, var, go!
 
 <p>simple, swift</p>
