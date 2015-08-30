@@ -11,11 +11,10 @@ More is to come.
 
 {% highlight swift linenos %}
 
-    // This is a code-block test
-
-    func testfun() -> () {
-        print("This is a test.")
-    }
+// This is a code-block test
+func testfun() -> () {
+    print("This is a test.")
+}
 
 {% endhighlight %}
     
