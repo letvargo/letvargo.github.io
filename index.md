@@ -9,7 +9,15 @@ Unfortunately, my server died and I have not yet been able to recover the posts 
 
 More is to come.
 
-    This is a code block.
+{% highlight swift %}
+
+// This is a code-block test
+
+func testfun() -> () {
+    print("This is a test.")
+}
+
+{% endhighlight %}
     
 And this is some `inline code`.
 
