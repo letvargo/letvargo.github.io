@@ -29,3 +29,7 @@ div.header, div.main-content {
 code, pre {
     font-family: "Courier", monospace
 }
+
+pre {
+    padding: 20px;
+}

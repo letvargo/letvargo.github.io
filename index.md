@@ -9,7 +9,7 @@ Unfortunately, my server died and I have not yet been able to recover the posts 
 
 More is to come.
 
-{% highlight ruby linenos %}
+{% highlight swift linenos %}
 
     // This is a code-block test
 
