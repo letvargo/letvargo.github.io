@@ -1,6 +1,6 @@
 body {
     background-color: lightgrey;
-    font-family: "Verdana", sans-serif;
+    font-family: "Georgia", serif;
     padding: 0px;
     margin: 0px;
 }
@@ -32,7 +32,7 @@ div.header, div.main-content {
 }
 
 code, pre {
-    font-family: "Courier", monospace
+    font-family: "Menlo", monospace
 }
 
 pre {
