@@ -1,6 +1,6 @@
 body {
     background-color: lightgrey;
-    font-family: "Georgia", serif;
+    font-family: "Trebuchet MS", Trebuchet, sans-serif;
     padding: 0px;
     margin: 0px;
 }
@@ -32,7 +32,7 @@ div.header, div.main-content {
 }
 
 code, pre {
-    font-family: "Menlo", monospace
+    font-family: "Andale Mono", "Menlo", monospace
 }
 
 pre {
