@@ -22,21 +22,30 @@ div.container {
     background-color: white;
 }
 
-.header {
+div.header {
     padding-top: 40px;
     padding-bottom: 20px;
 }
 
-div.main-content {
+div.header, div.main-content {
     width: 100%;
 }
 
-div.header {
+div.header-left {
+    float: left;
+}
+
+div.header-right {
+    float: right;
+}
+
+div.header-center {
     margin: auto;
 }
 
 .title, .subtitle {
     text-align: left;
+    padding-left: 30px;
 }
 
 code, pre {
