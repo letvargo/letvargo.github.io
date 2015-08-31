@@ -32,14 +32,17 @@ div.header, div.main-content {
 }
 
 div.header-left {
+    width: 30%;
     float: left;
 }
 
 div.header-right {
+    width: 30%;
     float: right;
 }
 
 div.header-center {
+    align: center;
     margin: auto;
 }
 
