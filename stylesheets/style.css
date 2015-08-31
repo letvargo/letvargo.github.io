@@ -5,6 +5,10 @@ body {
     margin: 0px;
 }
 
+img.header-image {
+    float: left;
+}
+
 div.container {
     width: 800px;
     height: 100%;
