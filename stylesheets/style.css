@@ -27,12 +27,16 @@ div.container {
     padding-bottom: 20px;
 }
 
-div.header, div.main-content {
+div.main-content {
     width: 100%;
 }
 
+div.header {
+    margin: auto;
+}
+
 .title, .subtitle {
-    text-align: center;
+    text-align: left;
 }
 
 code, pre {
