@@ -1,27 +1,113 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>let, var, go! by letvargo</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+            <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+            <link rel="stylesheet" type="text/css" href="stylesheets/syntax.css">
+        <title>let, var, go!</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+            
+        <div class="header-left"></div>
+<div class="header-center">
 
-  </head>
-  <body>
-    <div class="wrapper">
+    <img src="http://letvargo.github.io/assets/Sachi-Small.png" class="header-image"/>
 
-      <section>
-        <div id="title">
-          <h1>let, var, go!</h1>
-          <p>simple, swift</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/letvargo">letvargo</a></span>
-          <span class="credits right">Hosted on GitHub Pages</a></span>
+    <h1 class="title">let, var, go</h1>
+
+    <p class="subtitle">simple, swift</p>
+
+</div>
+<div class="header-right"></div>
+        
+            </div>
+            <div class = "main-content">
+            
+            <ul>
+                
+                <li>
+                    <a href="/A-Test-Post-Using-Jekyll/">Test Post Using Jekyll</a>
+                </li>
+                
+            </ul>
+            
+        <p>This is the github.io website for letvargo. The original website, http://letvargo.mooo.com is down indefinitely due to technical difficulties.</p>
+
+<p>Unfortunately, my server died and I have not yet been able to recover the posts that I had saved on it. I hope to recover some of the content eventually, but for now I&#39;m starting over with a fresh jekyll-powered website hosted here on GitHub.</p>
+
+<p>More is to come.</p>
+
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// This is a code-block test</span>
+
+<span class="k">func</span> <span class="nf">testfun</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;This is a test.&quot;</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>And this is some <code>inline code</code>.</p>
+
+<p>A bullet list looks like this:</p>
+
+<ul>
+<li>item</li>
+<li>item</li>
+<li>item
+
+<ol>
+<li>with some numbered items</li>
+<li>that go here</li>
+</ol></li>
+</ul>
+
+<p>A gist should go here:</p>
+
+<p><noscript><pre>// A main.swift file for launching a Cocoa application programmatically.</p>
+
+<p>import Cocoa</p>
+
+<p>private func setAppDelegate( 
+      application: NSApplication
+    , delegate: NSApplicationDelegate? )</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">-&amp;gt; NSApplication {
+
+application.delegate = delegate
+
+return application
+</code></pre></div>
+<p>}</p>
+
+<p>private func runApplication&lt; T: NSObject where T: NSApplicationDelegate &gt;( 
+      application: NSApplication = NSApplication.sharedApplication()
+    , delegateClass: T.Type? = nil
+    , bundle: NSBundle = NSBundle.mainBundle()
+    , nibName: String = &quot;MainMenu&quot;
+    , var topLevelObjects: NSArray? = nil ) {</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">let delegate = delegateClass?.init()
+
+if bundle.loadNibNamed( 
+      nibName
+    , owner: setAppDelegate(application, delegate: delegate)
+    , topLevelObjects: &amp;amp;topLevelObjects ) {
+
+        application.run()
+
+} else {
+
+    print(&amp;quot;An error was encountered while starting the application.&amp;quot;)
+
+}
+</code></pre></div>
+<p>}</p>
+
+<p>// When calling runApplication you should 
+// pass the class of your application delegate.</p>
+
+<p>runApplication(delegateClass: AppDelegate.self)</pre></noscript><script src="https://gist.github.com/letvargo/138109b9febfcb8bebbf.js?file=main.swift"> </script></p>
+
+        
+            </div>
         </div>
-
-<p>This is the github.io account for letvargo. The original website, <a href="http://letvargo.mooo.com">http://letvargo.mooo.com</a> is down indefinitely due to technical difficulties.</p>
-      </section>
-
-    </div>
-    
-  </body>
+    </body>
 </html>

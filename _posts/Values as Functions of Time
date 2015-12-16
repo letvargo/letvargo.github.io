@@ -1,0 +1,21 @@
+# Values as Functions of Time
+
+A constant is a value that remains the same no matter what time it is. In other words, a constant is a function of type *Time -> Value* where the *Time* parameter is ignored. The number `5`, for instance could be written as a function like this:
+
+	let five: Time -> Int = { _ in 5 }
+	
+	
+
+## Simple Values
+
+    extension Int: BehaviorType {
+        var at: Time -> Value = {
+            return { _ in self }
+        }
+        
+        var time: Time? {
+            return nil
+        }
+    }
+    
+    
