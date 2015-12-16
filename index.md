@@ -1,5 +1,5 @@
 ---
-layout: static
+layout: home
 title: let, var, go!
 ---
 

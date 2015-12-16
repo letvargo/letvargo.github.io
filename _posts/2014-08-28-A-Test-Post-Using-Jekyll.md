@@ -1,4 +1,5 @@
 ---
+layout: static
 title: Test Post Using Jekyll
 ---
 

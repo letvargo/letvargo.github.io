@@ -5,51 +5,53 @@ body {
     margin: 0px;
 }
 
-img.header-image {
-    float: left;
-    margin: 30px;
+div.header-image {
+    float: right;
+    margin-right: 50px;
 }
 
 div.container {
     width: 800px;
-    height: 100%;
+    height: auto;
     margin: 0px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
     padding-left: 40px;
     padding-right: 40px;
     background-color: white;
+    overflow: hidden;
 }
 
 div.header {
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 20px;
+}
+
+div.recent-posts {
+    float: right;
+    width: 220px;
+    padding: 15px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+div.header-title {
+    margin-left: 40px;
 }
 
 div.header, div.main-content {
     width: 100%;
 }
 
-div.header-left {
-    width: 30%;
-    float: left;
-}
-
-div.header-right {
-    width: 30%;
-    float: right;
-}
-
-div.header-center {
-    align: center;
-    margin: auto;
-}
-
-.title, .subtitle {
-    text-align: left;
-    padding-left: 30px;
+a.home-link {
+    text-decoration: none;
+    color: #000;
 }
 
 code, pre {
