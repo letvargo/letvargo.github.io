@@ -5,9 +5,13 @@ body {
     margin: 0px;
 }
 
-div.header-image {
-    float: right;
-    margin-right: 50px;
+.header-image {
+    margin: 0 auto;
+}
+
+img.header-image {
+    display: block;
+    -webkit-clip-path: ellipse(40px 50px at 58% 55%);
 }
 
 div.container {
@@ -42,7 +46,7 @@ div.recent-posts {
 }
 
 div.header-title {
-    margin-left: 40px;
+    text-align: center;
 }
 
 div.header, div.main-content {
