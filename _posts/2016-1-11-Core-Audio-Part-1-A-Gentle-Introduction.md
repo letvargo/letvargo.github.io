@@ -1,7 +1,7 @@
 ---
 layout: static
 published: true
-title: Core Audio and Swift Part 1: A Gentle Introduction
+title: Core Audio and Swift Part 1 - A Gentle Introduction
 ---
 
 Core Audio can be intimidating. The API is complex and the documentation is sparse. For someone like me who has no background in C, the low-level C style functions look like, well... a foreign language.
