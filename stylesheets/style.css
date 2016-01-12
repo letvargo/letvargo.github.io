@@ -64,4 +64,5 @@ code, pre {
 
 pre {
     padding: 20px;
+    overflow: auto;
 }
