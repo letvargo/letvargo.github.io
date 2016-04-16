@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/Core-Audio-Part-1-A-Gentle-Introduction/</loc>
+<loc>http://letvargo.github.io/Core-Audio-Part-1-A-Gentle-Introduction/</loc>
 <lastmod>2016-01-11T00:00:00-08:00</lastmod>
 </url>
 <url>
-<loc>/A-Swift-OpenGL-Tutorial/</loc>
+<loc>http://letvargo.github.io/A-Swift-OpenGL-Tutorial/</loc>
 <lastmod>2015-12-19T00:00:00-08:00</lastmod>
 </url>
 <url>
-<loc>/</loc>
+<loc>http://letvargo.github.io/</loc>
+</url>
+<url>
+<loc>http://letvargo.github.io/google54a74c95aed19008.html</loc>
+<lastmod>2016-04-15T19:37:39-07:00</lastmod>
 </url>
 </urlset>
