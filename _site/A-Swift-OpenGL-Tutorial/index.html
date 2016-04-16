@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
-            <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-            <link rel="stylesheet" type="text/css" href="/stylesheets/syntax.css">
+            <link rel="stylesheet" type="text/css" href="http://letvargo.github.io/stylesheets/style.css">
+            <link rel="stylesheet" type="text/css" href="http://letvargo.github.io/stylesheets/syntax.css">
         <title>let, var, go!</title>
     </head>
     <body>
@@ -18,12 +18,24 @@
     </div>
     
     <div class="header-title">
-    <a href="/index.html" class="home-link"><h1 class="title">let, var, go</h1></a>
+    <a href="http://letvargo.github.io/index.html" class="home-link"><h1 class="title">let, var, go</h1></a>
 
     <p class="subtitle">simple, swift</p>
     </div>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76499406-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </div>
+
         
             </div>
             <div class="main-content">
@@ -61,7 +73,7 @@
 <h2>Creating the <code>NSOpenGLView</code></h2>
 
 <p>We&#39;re going to create a class called <code>GLTutorialController</code> that will create an <code>NSOpenGLView</code> and add it to the main window. Create a file called <code>GLTutorialController</code> and add the following:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">import Cocoa
+<div class="highlight"><pre><code class="language-" data-lang="">import Cocoa
 import OpenGL.GL3
 import CoreVideo.CVDisplayLink
 
@@ -90,7 +102,7 @@ class GLTutorialController: NSObject {
 <p>You&#39;ll have to create a generic object in interface builder, change its class to <code>GLTutorialController</code>, and connect the <code>IBOutlet</code> to the main window.</p>
 
 <p>Now add the <code>createOpenGLView</code> function:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func createOpenGLView() {
+<div class="highlight"><pre><code class="language-" data-lang="">func createOpenGLView() {
     // 1 - Define a set of pixel attributes
     let pixelFormatAttributes: [NSOpenGLPixelFormatAttribute] =
         [ NSOpenGLPFAOpenGLProfile  , NSOpenGLProfileVersion3_2Core
@@ -118,24 +130,24 @@ class GLTutorialController: NSObject {
 <h2>Compiling and linking the shaders</h2>
 
 <p>The <code>awakeFromNib</code> function calls <code>createOpenGLResources</code> which looks like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func createOpenGLResources() {
+<div class="highlight"><pre><code class="language-" data-lang="">func createOpenGLResources() {
     view.openGLContext?.makeCurrentContext()
     loadShader()
     loadBufferData()
 }
 </code></pre></div>
 <p>As you can see, it actually handles two different tasks - it loads the shaders and loads the buffer data. We are going to start with the <code>loadShader</code> function:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func loadShader() {
+<div class="highlight"><pre><code class="language-" data-lang="">func loadShader() {
 
-    guard let vShaderFile = NSBundle.mainBundle().pathForResource(&quot;Shader&quot;, ofType: &quot;vsh&quot;)
-        , let fShaderFile = NSBundle.mainBundle().pathForResource(&quot;Shader&quot;, ofType: &quot;fsh&quot;)
+    guard let vShaderFile = NSBundle.mainBundle().pathForResource("Shader", ofType: "vsh")
+        , let fShaderFile = NSBundle.mainBundle().pathForResource("Shader", ofType: "fsh")
         else { return }
 
     let vertexShader = compileShaderOfType(GLenum(GL_VERTEX_SHADER), file: vShaderFile)
     let fragmentShader = compileShaderOfType(GLenum(GL_FRAGMENT_SHADER), file: fShaderFile)
 
     guard vertexShader != 0 &amp;&amp; fragmentShader != 0 else {
-        print(&quot;Shader compilation failed.&quot;)
+        print("Shader compilation failed.")
         return
     }
 
@@ -143,13 +155,13 @@ class GLTutorialController: NSObject {
 
     glAttachShader(shaderProgram, vertexShader)
     glAttachShader(shaderProgram, fragmentShader)
-    glBindFragDataLocation(shaderProgram, 0, &quot;fragColor&quot;)
+    glBindFragDataLocation(shaderProgram, 0, "fragColor")
 
     linkProgram(shaderProgram)
 
-    positionUniform = glGetUniformLocation(shaderProgram, &quot;p&quot;)
-    colorAttribute = glGetAttribLocation(shaderProgram, &quot;color&quot;)
-    positionAttribute = glGetAttribLocation(shaderProgram, &quot;position&quot;)
+    positionUniform = glGetUniformLocation(shaderProgram, "p")
+    colorAttribute = glGetAttribLocation(shaderProgram, "color")
+    positionAttribute = glGetAttribLocation(shaderProgram, "position")
 
     glDeleteShader(vertexShader)
     glDeleteShader(fragmentShader)
@@ -158,7 +170,7 @@ class GLTutorialController: NSObject {
 <p>I have omitted a lot of debugging code from what I am posting here. I suggest taking a look at the original source file which contains a lot of diagnostic tools that will help you identify any problems that arise. I&#39;m leaving it for the sake of brevity, but it was very useful to me in debugging my project. (And again, all credit goes to Tom Davies who wrote the original error diagnostics code in Objective-C.)</p>
 
 <p>The <code>loadShader</code> function calls two additional functions: <code>compileShaderOfType:file:</code> and <code>linkProgram:</code>. These functions look like this (again, with debugging code omitted for brevity- but seriously, you should include it if you are doing this):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func compileShaderOfType(type: GLenum, file: String) -&gt; GLuint {
+<div class="highlight"><pre><code class="language-" data-lang="">func compileShaderOfType(type: GLenum, file: String) -&gt; GLuint {
 
     var shader: GLuint = 0
 
@@ -169,8 +181,8 @@ class GLTutorialController: NSObject {
         glShaderSource(shader, 1, &amp;source, nil)
         glCompileShader(shader)
     } catch {
-        print(&quot;Failed to reader shader file.&quot;)
-        print(&quot;\(error)&quot;)
+        print("Failed to reader shader file.")
+        print("\(error)")
     }
     return shader
 }
@@ -185,7 +197,7 @@ func linkProgram(program: GLuint) {
 <h2>Loading the buffer data</h2>
 
 <p>We are going to need to supply data to an OpenGL buffer. To organize the data, let&#39;s create a couple of <code>struct</code>s:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">struct Vertex {
+<div class="highlight"><pre><code class="language-" data-lang="">struct Vertex {
     let position: (x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat)
     let color: (r: GLfloat, g: GLfloat, b: GLfloat, a: GLfloat)
 }
@@ -198,7 +210,7 @@ struct Vertices {
 }
 </code></pre></div>
 <p>With those in place, we can write our vertex data in a way that is semi-human-readable. Let&#39;s look at the <code>loadBufferData</code> function that we called from <code>createOpenGLResources</code>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func loadBufferData() {
+<div class="highlight"><pre><code class="language-" data-lang="">func loadBufferData() {
 
     var vertexData = Vertices(
         v1: Vertex( position:   (x: -0.5, y: -0.5, z:  0.0, w:  1.0),
@@ -227,19 +239,19 @@ struct Vertices {
 }
 </code></pre></div>
 <p>This is the section of code that gave me the most trouble in translation. I couldn&#39;t figure out how to set the offset in the last call to <code>glVertexAttribPointer</code>. Turns out that creating a pointer that represents an offset is easier than I imagined. Just create a null pointer and add the offset to it. That is what this line does:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">let offset = UnsafePointer&lt;Void&gt;() + sizeofValue(vertexData.v1.position)
+<div class="highlight"><pre><code class="language-" data-lang="">let offset = UnsafePointer&lt;Void&gt;() + sizeofValue(vertexData.v1.position)
 </code></pre></div>
 <h2>Creating the diplay link</h2>
 
 <p>A display link is used to synchronize the drawing with the display&#39;s normal refresh rate. Each time the screen refreshes, a C callback function is called that you use to call your drawing code.</p>
 
 <p>First, we create the display link using the <code>createDisplayLink</code> function that was called from <code>awakeFromNib</code>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func createDisplayLink() {
+<div class="highlight"><pre><code class="language-" data-lang="">func createDisplayLink() {
     let displayID = CGMainDisplayID()
     let error = CVDisplayLinkCreateWithCGDisplay(displayID, &amp;displayLink)
 
     guard let dLink = displayLink where kCVReturnSuccess == error else {
-        NSLog(&quot;Display Link created with error: %d&quot;, error)
+        NSLog("Display Link created with error: %d", error)
         displayLink = nil
         return
     }
@@ -249,10 +261,10 @@ struct Vertices {
 }
 </code></pre></div>
 <p>Note how we pass a pointer to <code>self</code> (using <code>unsafeAddressOf</code>) as an <code>UnsafeMutablePointer&lt;Void&gt;</code> when the display link callback is set in this line:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">CVDisplayLinkSetOutputCallback(dLink, displayCallback, UnsafeMutablePointer&lt;Void&gt;(unsafeAddressOf(self)))
+<div class="highlight"><pre><code class="language-" data-lang="">CVDisplayLinkSetOutputCallback(dLink, displayCallback, UnsafeMutablePointer&lt;Void&gt;(unsafeAddressOf(self)))
 </code></pre></div>
 <p>That pointer will get passed as a parameter to the callback function, and so that we can use it inside the callback. The callback function itself is called <code>displayCallback</code> and it looks like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">let displayCallback: CVDisplayLinkOutputCallback = { displayLink, inNow, inOutputTime, flagsIn, flagsOut, displayLinkContext in
+<div class="highlight"><pre><code class="language-" data-lang="">let displayCallback: CVDisplayLinkOutputCallback = { displayLink, inNow, inOutputTime, flagsIn, flagsOut, displayLinkContext in
     let controller = unsafeBitCast(displayLinkContext, GLTutorialController.self)
     controller.renderForTime(inOutputTime.memory)
     return kCVReturnSuccess
@@ -261,14 +273,14 @@ struct Vertices {
 <p>The <code>displayLinkContext</code> parameter is the pointer to <code>self</code> that gets passed to the callback. In order to use it, we invoke <code>unsafeBitCast(displayLinkContext, GLTutorialController.self)</code> to cast it back to its type, <code>GLTutorialController</code>.</p>
 
 <p>Now we&#39;ve got a working display link. Every time the display refreshes, this line will be invoked from the callback:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">controller.renderForTime(inOutputTime.memory)
+<div class="highlight"><pre><code class="language-" data-lang="">controller.renderForTime(inOutputTime.memory)
 </code></pre></div>
 <p>All of our drawing code will be included in that function, <code>renderForTime:</code></p>
 
 <h2>Drawing to the screen</h2>
 
 <p>The last thing we need to add to our <code>GLTutorialController</code> class is our <code>renderForTime:</code> function:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func renderForTime(time: CVTimeStamp) {
+<div class="highlight"><pre><code class="language-" data-lang="">func renderForTime(time: CVTimeStamp) {
 
     view.openGLContext?.makeCurrentContext()
 
@@ -292,6 +304,31 @@ struct Vertices {
 
         
             </div>
+            <div class="comments">
+                
+                <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_config = function () {
+        this.page.url = http://letvargo.github.io/A-Swift-OpenGL-Tutorial/;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = /A-Swift-OpenGL-Tutorial; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//letvargo.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+                
+</div>
+
         </div>
     </body>
 </html>

@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
-            <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-            <link rel="stylesheet" type="text/css" href="/stylesheets/syntax.css">
+            <link rel="stylesheet" type="text/css" href="http://letvargo.github.io/stylesheets/style.css">
+            <link rel="stylesheet" type="text/css" href="http://letvargo.github.io/stylesheets/syntax.css">
         <title>let, var, go!</title>
     </head>
     <body>
@@ -18,12 +18,24 @@
     </div>
     
     <div class="header-title">
-    <a href="/index.html" class="home-link"><h1 class="title">let, var, go</h1></a>
+    <a href="http://letvargo.github.io/index.html" class="home-link"><h1 class="title">let, var, go</h1></a>
 
     <p class="subtitle">simple, swift</p>
     </div>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76499406-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </div>
+
         
             </div>
             <div class="main-content">
@@ -60,12 +72,12 @@
 <p>One of the simplest things you can do with Audio File Services is open an audio file and get information about the contents of the file. It makes for a good introduction to some of the peculiarities of how Core Audio works. </p>
 
 <p>To work with Audio File Services, you need to include the line,</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">import AudioToolbox
+<div class="highlight"><pre><code class="language-" data-lang="">import AudioToolbox
 </code></pre></div>
 <p>at the top of any files that make use of it.</p>
 
 <p>Let&#39;s jump right in with some code. The function that you use to open an audio file is called <code>AudioFileOpenURL</code>, and it looks like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func AudioFileOpenURL(
+<div class="highlight"><pre><code class="language-" data-lang="">func AudioFileOpenURL(
       _ inFileRef: CFURL
     , _ inPermissions: AudioFilePermissions
     , _ inFileTypeHint: AudioFileTypeID
@@ -83,16 +95,16 @@
 <p>The return value is an <code>OSStatus</code>, which is a <code>typealias</code> for <code>Int32</code>. The <code>OSStatus</code> code will be <code>0</code>, aka <code>noErr</code>, if there were no errors. Otherwise, it will be an <code>Int32</code> value that corresponds to a particular error. There will be more talk about error codes in the next few posts.</p>
 
 <p>The first thing we need is a URL. Pick a file, any file, from your iTunes library and create a <code>String</code> to hold the file path and turn it into a <code>NSURL</code>. I&#39;m going with some INXS, but it works for sucky music too:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">let filePath = &quot;/Users/doofnugget/Music/iTunes/iTunes Media/Music/INXS/Kick/02 New Sensation.m4a&quot;
+<div class="highlight"><pre><code class="language-" data-lang="">let filePath = "/Users/doofnugget/Music/iTunes/iTunes Media/Music/INXS/Kick/02 New Sensation.m4a"
 
 let url = NSURL(fileURLWithPath: filePath)
 </code></pre></div>
 <p>The <code>outAudioFile</code> parameter is an <code>UnsafeMutablePointer</code> to an <code>AudioFileID</code>. You pass the pointer in and Audio File Services fills it in with the information from the audio file that you are opening. To pass a pointer to an <code>AudioFileID</code> all you have to do is initialize one as a <code>var</code> and pass it in using <code>&amp;</code>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var audioFile = AudioFileID()
+<div class="highlight"><pre><code class="language-" data-lang="">var audioFile = AudioFileID()
 var status = AudioFileOpenURL(url, .ReadPermission, 0, &amp;audioFile)
 
 if status != noErr { 
-    print(&quot;An error occurred while opening the audio file: Error code \(status).&quot;) 
+    print("An error occurred while opening the audio file: Error code \(status).") 
 }
 </code></pre></div>
 <p><code>audioFile</code> is now a pointer to the file that we can use to get information about it.</p>
@@ -104,12 +116,12 @@ if status != noErr {
 <h2>Getting Property Size Information</h2>
 
 <p><code>AudioFileID</code> is a <code>typealias</code> for a <code>COpaquePointer</code>. The word &quot;opaque&quot; is fitting. You cannot directly access any of the <code>AudioFileID</code>s properties. For example, every <code>AudioFileID</code> has a property that represents the estimated duration of the audio file. But you can&#39;t access it the way you would normally access an object&#39;s properties. This doesn&#39;t work:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">let duration = audioFile.estimatedDuration
+<div class="highlight"><pre><code class="language-" data-lang="">let duration = audioFile.estimatedDuration
 </code></pre></div>
 <p>No, the process for getting property information is somewhat more complex. It has two parts: First, you have to get the size (a <code>UInt32</code> value that represents the property&#39;s size in bytes) of the property using <code>AudioFileGetPropertyInfo</code>. Only after you&#39;ve gotten the size can you actually query the audio file for its properties.</p>
 
 <p><code>AudioFileGetPropertyInfo</code> looks like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func AudioFileGetPropertyInfo(
+<div class="highlight"><pre><code class="language-" data-lang="">func AudioFileGetPropertyInfo(
       _ inAudioFile: AudioFileID
     , _ inPropertyID: AudioFilePropertyID
     , _ outDataSize: UnsafeMutablePointer&lt;UInt32&gt;
@@ -118,7 +130,7 @@ if status != noErr {
 <p>So let&#39;s do it. We&#39;re going to get the audio file&#39;s &quot;info dictionary&quot; property. The info dictionary is a <code>NSDictionary</code> that contains information like the artist&#39;s name, the tempo, the album name, the year that the song came out, etc.</p>
 
 <p>Here is what the code looks like for getting the size of the property that we are going to access:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var size: UInt32 = 0                         // 1
+<div class="highlight"><pre><code class="language-" data-lang="">var size: UInt32 = 0                         // 1
 status = AudioFileGetPropertyInfo(
       audioFile                              // 2
     , kAudioFilePropertyInfoDictionary       // 3
@@ -126,7 +138,7 @@ status = AudioFileGetPropertyInfo(
     , nil )                                  // 5
 
 if status != noErr {                         // 6
-    print(&quot;An error occurred while getting the info dictionary property size: Error code \(status).&quot;) 
+    print("An error occurred while getting the info dictionary property size: Error code \(status).") 
 }
 </code></pre></div>
 <ol>
@@ -141,14 +153,14 @@ if status != noErr {                         // 6
 <h2>Accessing the Property</h2>
 
 <p>Now that we have the property&#39;s size stored away in our <code>size</code> variable, we can actually ask the audio file to give us the property data. The function for getting the property data is called <code>AudioFileGetProperty</code>, and it looks like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">func AudioFileGetProperty(
+<div class="highlight"><pre><code class="language-" data-lang="">func AudioFileGetProperty(
       _ inAudioFile: AudioFileID
     , _ inPropertyID: AudioFilePropertyID
     , _ ioDataSize: UnsafeMutablePointer&lt;UInt32&gt;
     , _ outPropertyData: UnsafeMutablePointer&lt;Void&gt; ) -&gt; OSStatus
 </code></pre></div>
 <p>And this is the code for actually retrieving the dictionary information:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var infoDictionary = NSDictionary()          // 1
+<div class="highlight"><pre><code class="language-" data-lang="">var infoDictionary = NSDictionary()          // 1
 status = AudioFileGetProperty(
       audioFile                              // 2
     , kAudioFilePropertyInfoDictionary       // 3
@@ -156,7 +168,7 @@ status = AudioFileGetProperty(
     , &amp;infoDictionary )                      // 5
 
 if status != noErr {                         // 6
-    print(&quot;An error occurred while getting the info dictionary property: Error code \(status).&quot;) 
+    print("An error occurred while getting the info dictionary property: Error code \(status).") 
 }
 </code></pre></div>
 <p>This should all be starting to look a little familiar by now. </p>
@@ -170,19 +182,19 @@ if status != noErr {                         // 6
 </ol>
 
 <p>When the function returns, <code>infoDictionary</code> will be populated with the data that we were looking for (artist name, album, song title, etc.) This is the output that I get when I print the info dictionary for the file that I opened:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">{
-    album = Kick;
-    &quot;approximate duration in seconds&quot; = &quot;220.192&quot;;
-    artist = INXS;
-    genre = Rock;
-    title = &quot;New Sensation&quot;;
-    &quot;track number&quot; = &quot;2/12&quot;;
-    year = 1988;
-}
-</code></pre></div>
+<div class="highlight"><pre><code class="language-" data-lang=""><span class="p">{</span><span class="w">
+    </span><span class="err">album</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">Kick;</span><span class="w">
+    </span><span class="nt">"approximate duration in seconds"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="nt">"220.192"</span><span class="err">;</span><span class="w">
+    </span><span class="err">artist</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">INXS;</span><span class="w">
+    </span><span class="err">genre</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">Rock;</span><span class="w">
+    </span><span class="err">title</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="nt">"New Sensation"</span><span class="err">;</span><span class="w">
+    </span><span class="nt">"track number"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="nt">"2/12"</span><span class="err">;</span><span class="w">
+    </span><span class="err">year</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">1988;</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div>
 <p>Audio File Services contains a number of constants that represent the possible keys in this dictionary. For example, the key for retrieving the artist&#39;s name is <code>kAFInfoDictionary_Artist</code>. Use the keys to get specific information like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">if let artist = infoDictionary[kAFInfoDictionary_Artist] {
-    print(artist)             // Output: &quot;INXS&quot;
+<div class="highlight"><pre><code class="language-" data-lang="">if let artist = infoDictionary[kAFInfoDictionary_Artist] {
+    print(artist)             // Output: "INXS"
 }
 </code></pre></div>
 <h2>Conclusion</h2>
@@ -193,6 +205,31 @@ if status != noErr {                         // 6
 
         
             </div>
+            <div class="comments">
+                
+                <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_config = function () {
+        this.page.url = http://letvargo.github.io/Core-Audio-Part-1-A-Gentle-Introduction/;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = /Core-Audio-Part-1-A-Gentle-Introduction; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//letvargo.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+                
+</div>
+
         </div>
     </body>
 </html>
