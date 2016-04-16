@@ -1,6 +1,7 @@
 ---
 layout: static
 published: true
+comments: true
 title: Core Audio and Swift Part 1 - A Gentle Introduction
 ---
 

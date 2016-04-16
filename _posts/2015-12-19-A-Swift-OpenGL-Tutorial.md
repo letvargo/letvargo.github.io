@@ -1,5 +1,6 @@
 ---
 layout: static
+comments: true
 published: true
 title: A Swift OpenGL Tutorial
 ---
